@@ -1,0 +1,56 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    </link>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="index.js"></script>
+    <title>Latin Flashcards</title>
+</head>
+
+
+
+<nav style="z-index: 4000;">
+    <ul class="nav-list">
+        <li><a class="nav-item" href="index.html" style="background-color: #484848">Flashcards</a></li>
+        <li><a class="nav-item" href="quiz.html">Quiz</a></li>
+        <li><a class="nav-item" href="about.html">How to use</a></li>
+    </ul>
+</nav>
+
+<body>
+    <div class="glow-circle"></div>
+    <input type="file" class="select-button">
+    </button>
+
+    <div class="flashcard-container">
+        <button class="next-button" id="prev">
+            <span class="material-icons">
+                chevron_left
+            </span>
+        </button>
+        <div class="flashcard">
+            <h1 class="word"></h1>
+        </div>
+
+        <div class="bottom-buttons">
+            <button class="button shuffle" id="shuffle">
+                <span class="material-icons button-icon">
+                    shuffle
+                </span>
+            </button>
+
+            <button class="button delete" id="delete" style="background-color: red;">
+                <span class="material-icons button-icon">
+                    delete
+                </span>
+            </button>
+        </div>
+
+        <button class="next-button" id="next">
+            <span class="material-icons button-icon">
+                chevron_right
+            </span>
+        </button>
+
+    </div>
+</body>
