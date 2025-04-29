@@ -37,7 +37,7 @@ nav {
     background-color: #282828;
     border-radius: 10px;
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 50%;
     width: 70vw;
     height: 50vh;
@@ -92,7 +92,6 @@ h1 {
 }
 
 .next-button {
-    align-self: center;
     background-color: #3a3a3a;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     color: white;
@@ -117,15 +116,14 @@ h1 {
 .button-icon {
     align-self: center;
     justify-self: center;
-    transform: translate(-50%, -50%);
 }
 
 .bottom-buttons {
     display: flex;
     position: absolute;
     top: 100%;
-    left: 49.5%;
-    transform: translate(50%, 50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     margin: 20px;
 }
 
