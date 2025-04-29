@@ -39,6 +39,8 @@ nav {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 70vw;
+    height: 40vh;
     transform: translate(-50%, -50%);
 }
 
@@ -105,6 +107,7 @@ h1 {
     justify-content: center;
     align-content: center;
     transition: background-color 0.3s ease;
+    transform: translate(-50%, -50%);
 }
 
 .next-button:hover {
@@ -115,6 +118,7 @@ h1 {
 .button-icon {
     align-self: center;
     justify-self: center;
+    transform: translate(-50%, -50%);
 }
 
 .bottom-buttons {
