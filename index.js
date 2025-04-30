@@ -12,7 +12,7 @@ function updateCsvs() {
     englishDefinitions = [];
 
     for (let i = minChapter; i <= maxChapter; i++) {
-        const filePath = `/csvs/${i}.csv`; // Path to the CSV file
+        const filePath = `https://wljal.github.io/latin-flashcards/csvs/${i}.csv`; // Path to the CSV file
 
         fetch(filePath)
             .then(response => {
