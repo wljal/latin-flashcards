@@ -19,10 +19,14 @@
 
 <body>
     <div class="glow-circle"></div>
-    <input type="file" class="select-button">
-    </button>
-
     <div class="flashcard-container">
+        <div class="selector-container">
+            <div style="font-size: large; font-weight: bold;">Select Chapter: </div>
+            <input type="number" class="select-button" id="initial-chapter" min="1" value="1">
+            <div style="font-size: large; font-weight: bold;">to </div>
+            <input type="number" class="select-button" id="max-chapter" max="20" value="20">
+            <button class="select-button" id="load-chapters">Load Chapters</button>
+        </div>
         <button class="next-button" id="prev">
             <span class="material-icons">
                 chevron_left

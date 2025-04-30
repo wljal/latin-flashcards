@@ -4,27 +4,47 @@ let englishDefinitions = [];
 let selectedWord = 0;
 let flipped = false;
 
-$(document).on('change', '.select-button', function () {
-    const fileReader = new FileReader();
-    fileReader.onload = function (event) {
-        const fileContent = event.target.result;
-        const lines = fileContent.split('\n');
-        lines.shift();
-        lines.forEach((element) => {
-            var both = element.split(/,(.*)/s);
-            latinWords.push(both[0]);
-            englishDefinitions.push(both[1]);
-        });
-        updateFlashcard();
-    };
-    fileReader.readAsText(this.files[0]);
-});
+function updateCsvs() {
+    const minChapter = parseInt(document.getElementById("initial-chapter").value);
+    const maxChapter = parseInt(document.getElementById("max-chapter").value);
+
+    latinWords = [];
+    englishDefinitions = [];
+
+    for (let i = minChapter; i <= maxChapter; i++) {
+        const filePath = `/csvs/${i}.csv`; // Path to the CSV file
+
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch ${filePath}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(fileContent => {
+                const lines = fileContent.split('\n');
+                lines.shift(); // Remove the header row
+                lines.forEach(element => {
+                    const both = element.split(/,(.*)/s);
+                    latinWords.push(both[0]);
+                    englishDefinitions.push(both[1]);
+                });
+                updateFlashcard();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+}
 
 $(document).on('click', '#next', function () { selectedWord++; if (selectedWord > latinWords.length) selectedWord = latinWords.length; updateFlashcard(); });
 $(document).on('click', '#prev', function () { selectedWord--; if (selectedWord < 0) selectedWord = 0; updateFlashcard(); });
 $(document).on('click', '.flashcard', function () { flipped = !flipped; updateFlashcard(); });
 $(document).on('click', '.shuffle', function () { shuffleArray(latinWords); updateFlashcard(); });
 $(document).on('click', '.delete', function () { latinWords.splice(selectedWord, 1); updateFlashcard(); });
+
+$(document).on('click', '#load-chapters', function () { updateCsvs(); });
+
 
 function updateFlashcard() {
     if (latinWords.length > 0) {
