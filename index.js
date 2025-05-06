@@ -25,9 +25,11 @@ function updateCsvs() {
                 const lines = fileContent.split('\n');
                 lines.shift(); // Remove the header row
                 lines.forEach(element => {
+                    if(lines != "") {
                     const both = element.split(/,(.*)/s);
                     latinWords.push(both[0]);
                     englishDefinitions.push(both[1]);
+                    }
                 });
                 updateFlashcard();
             })
