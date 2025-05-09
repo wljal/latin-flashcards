@@ -39,11 +39,11 @@ function updateCsvs() {
     }
 }
 
-$(document).on('click', '#next', function () { selectedWord++; if (selectedWord > latinWords.length) selectedWord = latinWords.length; flipped = false; updateFlashcard(); });
-$(document).on('click', '#prev', function () { selectedWord--; if (selectedWord < 0) selectedWord = 0; flipped = false; updateFlashcard(); });
+$(document).on('click', '#next', function () { selectedWord++; if (selectedWord > latinWords.length) selectedWord = latinWords.length; flipped = $(".switch").checked; updateFlashcard(); });
+$(document).on('click', '#prev', function () { selectedWord--; if (selectedWord < 0) selectedWord = 0; flipped = $(".switch").checked; updateFlashcard(); });
 $(document).on('click', '.flashcard', function () { flipped = !flipped; updateFlashcard(); });
-$(document).on('click', '.shuffle', function () { shuffleArray(latinWords); flipped = false; updateFlashcard(); });
-$(document).on('click', '.delete', function () { latinWords.splice(selectedWord, 1); englishDefinitions.splice(selectedWord, 1); updateFlashcard(); });
+$(document).on('click', '.shuffle', function () { shuffleArray(latinWords); flipped = $(".switch").checked; updateFlashcard(); });
+$(document).on('click', '.delete', function () { latinWords.splice(selectedWord, 1); englishDefinitions.splice(selectedWord, 1); flipped = $(".switch").checked; updateFlashcard(); });
 
 $(document).on('click', '#load-chapters', function () { updateCsvs(); });
 
