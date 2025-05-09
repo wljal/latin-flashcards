@@ -42,7 +42,7 @@ function updateCsvs() {
 $(document).on('click', '#next', function () { selectedWord++; if (selectedWord > latinWords.length) selectedWord = latinWords.length; flipped = $("#switch").is(":checked") ; updateFlashcard(); });
 $(document).on('click', '#prev', function () { selectedWord--; if (selectedWord < 0) selectedWord = 0; flipped = $("#switch").is(":checked"); updateFlashcard(); });
 $(document).on('click', '.flashcard', function () { flipped = !flipped; updateFlashcard(); });
-$(document).on('click', '.shuffle', function () { shuffleArray(latinWords); flipped = $(".switch").is(":checked"); updateFlashcard(); });
+$(document).on('click', '.shuffle', function () { shuffleArray(latinWords); flipped = $("#switch").is(":checked"); updateFlashcard(); });
 $(document).on('click', '.delete', function () { latinWords.splice(selectedWord, 1); englishDefinitions.splice(selectedWord, 1); flipped = $("#switch").is(":checked"); updateFlashcard(); });
 
 $(document).on('click', '#load-chapters', function () { updateCsvs(); });
