@@ -27,8 +27,10 @@ function updateCsvs() {
                 lines.forEach(element => {
                     if(lines != "") {
                     const both = element.split(/,(.*)/s);
-                    latinWords.push(both[0]);
-                    englishDefinitions.push(both[1]);
+                    if(both[0].length === 0 || both[1].length === 0) { 
+                    latinWords.push(both[0].replace(/"/g, ''));
+                    englishDefinitions.push(both[1].replace(/"/g, ''));
+                    }
                     }
                 });
                 updateFlashcard();
@@ -39,8 +41,8 @@ function updateCsvs() {
     }
 }
 
-$(document).on('click', '#next', function () { selectedWord++; if (selectedWord => latinWords.length) selectedWord = 0; flipped = $("#switch").is(":checked") ; updateFlashcard(); });
-$(document).on('click', '#prev', function () { selectedWord--; if (selectedWord =< 0) selectedWord = latinWords.length; flipped = $("#switch").is(":checked"); updateFlashcard(); });
+$(document).on('click', '#next', function () { selectedWord++; if (selectedWord > latinWords.length - 1) selectedWord = 0; flipped = $("#switch").is(":checked") ; updateFlashcard(); });
+$(document).on('click', '#prev', function () { selectedWord--; if (selectedWord < 0) selectedWord = latinWords.length - 1; flipped = $("#switch").is(":checked"); updateFlashcard(); });
 $(document).on('click', '.flashcard', function () { flipped = !flipped; updateFlashcard(); });
 $(document).on('click', '.shuffle', function () { shuffleArray(latinWords); flipped = $("#switch").is(":checked"); updateFlashcard(); });
 $(document).on('click', '.delete', function () { latinWords.splice(selectedWord, 1); englishDefinitions.splice(selectedWord, 1); if(selectedWord > latinWords.length) selectedWord = 0; flipped = $("#switch").is(":checked"); updateFlashcard(); });
