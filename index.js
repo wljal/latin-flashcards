@@ -27,7 +27,7 @@ function updateCsvs() {
                 lines.forEach(element => {
                     if(lines != "") {
                     const both = element.split(/,(.*)/s);
-                    if(both[0].length === 0 || both[1].length === 0) { 
+                    if(both[0].length !== 0 && both[1].length !== 0) { 
                     latinWords.push(both[0]);
                     englishDefinitions.push(both[1]);
                     }
