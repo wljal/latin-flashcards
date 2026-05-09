@@ -28,8 +28,8 @@ function updateCsvs() {
                     if(lines != "") {
                     const both = element.split(/,(.*)/s);
                     if(both[0].length === 0 || both[1].length === 0) { 
-                    latinWords.push(both[0].replace(/"/g, ''));
-                    englishDefinitions.push(both[1].replace(/"/g, ''));
+                    latinWords.push(both[0]);
+                    englishDefinitions.push(both[1]);
                     }
                     }
                 });
